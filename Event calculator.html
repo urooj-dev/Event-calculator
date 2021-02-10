@@ -1,0 +1,122 @@
+<html>
+<head>
+  <title>Calculator</title>
+    <style>
+    
+.calculator {
+  width: 300px;
+  padding: 15px;
+  border-radius: 7px;
+  background-color:rgb(145, 145, 142);
+  border: 2px solid black;
+}
+
+body {
+  padding: 20px;
+  margin: 20px;
+  width: 270px;
+  height: 500px;
+  display:grid;
+  align-items: center;
+  background-color: whitesmoke;
+  font-family: sans-serif;
+}
+
+.display {
+  border: 2px solid black;
+  width: 95%;
+  height: 80px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: xx-large;
+  background-color:rgb(219, 215, 215) ;
+  color: #000;
+  text-align: right;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.row {
+  display:inline-table;
+}
+button {
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  border-style: double;
+  background-color:rgb(238, 238, 231);
+  color:black;
+  margin: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+.operator {
+  background-color: whitesmoke;
+  color: red;
+}
+</style>
+</head>
+<body> 
+  
+  <div class="calculator">
+
+    <input type="text" class="display" disabled>
+
+    <div class="keys">
+
+  <div class="row">
+    <button value="7">7</button>
+    <button value="8">8</button>
+    <button value="9">9</button>
+    <button value="+" class="operator">+</button>
+  </div>
+  <div class="row">
+    <button value="4">4</button>
+    <button value="5">5</button>
+    <button value="6">6</button>
+    <button value="-" class="operator">-</button>
+  </div>
+  <div class="row">
+    <button value="1">1</button>
+    <button value="2">2</button>
+    <button value="3">3</button>
+    <button value="*" class="operator">*</button>
+  </div>
+  <div class="row">
+    <button value="AC" class="operator">AC</button>
+    <button value="0">0</button>
+    <button value="/" class="operator">/</button>
+    <button value="=" class="operator">=</button>
+  </div>
+
+  </div>
+</div>
+
+
+  <script>
+  
+  const buttons = document.querySelectorAll('button');
+  const display = document.querySelector('.display');
+  buttons.forEach(function(button) {
+    button.addEventListener('click', calculate);
+  });
+  function calculate(event) {
+    const clickedButtonValue = event.target.value;
+  
+    if (clickedButtonValue === '=') {
+      if (display.value !== '') {
+        display.value = eval(display.value);
+      }
+    } else if (clickedButtonValue === 'AC') {
+      display.value = '';
+    } else {
+      display.value += clickedButtonValue;
+    }
+  }
+  
+
+</script>
+</body>
+</html>
